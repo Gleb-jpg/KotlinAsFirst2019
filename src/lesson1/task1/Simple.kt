@@ -2,6 +2,7 @@
 
 package lesson1.task1
 
+import org.omg.CORBA.INTERNAL
 import kotlin.math.*
 
 /**
@@ -117,7 +118,8 @@ fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minute
  * Сколько денег будет на счету через 3 года (с учётом сложных процентов)?
  * Например, 100 рублей под 10% годовых превратятся в 133.1 рубля
  */
-fun accountInThreeYears(initial: Int, percent: Int): Double = 
+fun accountInThreeYears(initial: Int, percent: Int):
+        Double = initial*(1+1 / 100.0 * percent)*(1+1 / 100.0 * percent)*(1+1 / 100.0 * percent)
 
 /**
  * Простая
@@ -125,4 +127,4 @@ fun accountInThreeYears(initial: Int, percent: Int): Double =
  * Пользователь задает целое трехзначное число (например, 478).
  * Необходимо вывести число, полученное из заданного перестановкой цифр в обратном порядке (например, 874).
  */
-fun numberRevert(number: Int): Int = TODO()
+fun numberRevert(number: Int): Int = number % 100
