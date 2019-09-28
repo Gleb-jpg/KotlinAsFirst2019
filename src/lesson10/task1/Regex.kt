@@ -23,27 +23,6 @@ import java.util.regex.Pattern
  * Обратите внимание, что функция является целочисленной,
  * то есть деление также следует трактовать как целочисленное.
  */
-fun parseExpr(inputName: String, values: List<Int>): Map<Int, Int> {
-    val expr = File(inputName).readLines().firstOrNull()?.parseExpr() ?: throw IllegalArgumentException()
-    val result = mutableMapOf<Int, Int>()
-    for (value in values) {
-        result[value] = expr.calculate(value)
-    }
-    return result
-}
-
-fun String.parseExpr(): Expression {
-    val pattern = Pattern.compile("""x|\+|-|\*|/|\(|\)|\d+| +?|.+?""")
-    val matcher = pattern.matcher(this)
-    val groups = mutableListOf<String>()
-    while (matcher.find()) {
-        val group = matcher.group()
-        if (group[0] != ' ') {
-            groups.add(group)
-        }
-    }
-    return Parser(groups).parse()
-}
 
 sealed class Expression {
     object Variable : Expression()
@@ -81,6 +60,32 @@ sealed class Expression {
         is Negate -> -arg.calculate(x)
     }
 }
+
+fun parseExpr(inputName: String, values: List<Int>): Map<Int, Int> {
+    val expr = File(inputName).readLines().firstOrNull()?.parseExpr() ?: throw IllegalArgumentException()
+    val result = mutableMapOf<Int, Int>()
+    for (value in values) {
+        result[value] = expr.calculate(value)
+    }
+    return result
+}
+
+
+
+fun String.parseExpr(): Expression {
+    val pattern = Pattern.compile("""x|\+|-|\*|/|\(|\)|\d+| +?|.+?""")
+    val matcher = pattern.matcher(this)
+    val groups = mutableListOf<String>()
+    while (matcher.find()) {
+        val group = matcher.group()
+        if (group[0] != ' ') {
+            groups.add(group)
+        }
+    }
+    return Parser(groups).parse()
+}
+
+
 
 class Parser(private val groups: List<String>) {
     private var pos = 0
