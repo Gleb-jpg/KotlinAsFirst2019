@@ -70,7 +70,7 @@ fun seconds(hours: Int, minutes: Int, seconds: Int): Int = hours * 60 * 60 + min
  * 1 сажень = 3 аршина = 48 вершков, 1 вершок = 4.445 см.
  */
 fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int): Double =
-     ( sagenes * 48 * 4.445 + arshins * 16 * 4.445 + vershoks * 4.445) / 100
+    (sagenes * 48 * 4.445 + arshins * 16 * 4.445 + vershoks * 4.445) / 100
 
 /**
  * Тривиальная
@@ -79,7 +79,7 @@ fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int): Double =
  * Вывести значение того же угла в радианах (например, 0.63256).
  */
 fun angleInRadian(deg: Int, min: Int, sec: Int): Double =
-     deg * PI / 180 + min / 60.0 * PI / 180 + sec / 60.0 / 60.0 * PI / 180
+    deg * PI / 180 + min / 60.0 * PI / 180 + sec / 60.0 / 60.0 * PI / 180
 
 /**
  * Тривиальная
@@ -88,7 +88,7 @@ fun angleInRadian(deg: Int, min: Int, sec: Int): Double =
  * Например, расстояние между (3, 0) и (0, 4) равно 5
  */
 fun trackLength(x1: Double, y1: Double, x2: Double, y2: Double): Double =
-sqrt((y2-y1).pow(2)+(x2-x1).pow(2))
+    sqrt((y2 - y1).pow(2) + (x2 - x1).pow(2))
 
 /**
  * Простая
@@ -96,7 +96,7 @@ sqrt((y2-y1).pow(2)+(x2-x1).pow(2))
  * Пользователь задает целое число, большее 100 (например, 3801).
  * Определить третью цифру справа в этом числе (в данном случае 8).
  */
-fun thirdDigit(number: Int): Int =(number / 100) % 10
+fun thirdDigit(number: Int): Int = (number / 100) % 10
 
 
 /**
@@ -107,8 +107,7 @@ fun thirdDigit(number: Int): Int =(number / 100) % 10
  * Определите время поезда в пути в минутах (в данном случае 216).
  */
 fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minutesArrive: Int): Int =
-    (hoursArrive*60 + minutesArrive)-(hoursDepart*60+minutesDepart)
-
+    (hoursArrive * 60 + minutesArrive) - (hoursDepart * 60 + minutesDepart)
 
 
 /**
@@ -119,7 +118,7 @@ fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minute
  * Например, 100 рублей под 10% годовых превратятся в 133.1 рубля
  */
 fun accountInThreeYears(initial: Int, percent: Int):
-         Double = initial*(1+1 / 100.0 * percent)*(1+1 / 100.0 * percent)*(1+1 / 100.0 * percent)
+        Double = initial * (1 + 1 / 100.0 * percent) * (1 + 1 / 100.0 * percent) * (1 + 1 / 100.0 * percent)
 
 /**
  * Простая
@@ -127,4 +126,4 @@ fun accountInThreeYears(initial: Int, percent: Int):
  * Пользователь задает целое трехзначное число (например, 478).
  * Необходимо вывести число, полученное из заданного перестановкой цифр в обратном порядке (например, 874).
  */
-fun numberRevert(number: Int): Int = number % 10 * 100 + (number / 10 % 10 *10) +(number / 100)
+fun numberRevert(number: Int): Int = number % 10 * 100 + (number / 10 % 10 * 10) + (number / 100)
